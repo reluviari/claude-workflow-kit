@@ -62,6 +62,7 @@ Create or update:
 
 ```txt
 CLAUDE.md
+README_SUGGESTED_CLAUDE.md
 
 .claude/
   agents/
@@ -112,13 +113,50 @@ Then merge in Claude Workflow Kit operational discipline:
 
 Avoid duplicated sections. Prefer real project facts over generic kit text. If existing instructions conflict with kit discipline, preserve the project-specific constraint and document the conflict clearly in `CLAUDE.md`.
 
-## Step 6 — Agents
+## Step 6 — Suggested product README
+
+Create or update `README_SUGGESTED_CLAUDE.md` at the project root.
+
+Do not modify the existing `README.md`.
+
+The suggested README must be a product and engineering README adapted to the detected product, market, stack, architecture and commands.
+
+Use this section order when applicable:
+
+1. project title and concise product summary
+2. market/problem context and value proposition
+3. demo, deployed environments or service URLs, only when evidenced
+4. local architecture diagram using Mermaid
+5. prerequisites
+6. how to run locally
+7. available scripts or commands
+8. main functional scope
+9. API endpoints, if applicable
+10. technology stack
+11. folder structure
+12. testing strategy and commands
+13. CI/CD, if detected
+14. observability, if detected
+15. cloud architecture or scalability diagram, only when evidenced
+16. decisions and trade-offs
+
+Rules for `README_SUGGESTED_CLAUDE.md`:
+
+- Do not mention AI, Claude, agents, prompts, generated content, or AI-assisted development.
+- Do not invent URLs, credentials, features, endpoints, cloud providers, infrastructure, scripts or commands.
+- If something is inferred, mark it as an assumption.
+- If cloud architecture is not present, omit it or include a clearly labeled future recommendation section.
+- Use Mermaid diagrams when they help explain local runtime or cloud architecture.
+- Prefer tables for services, commands, endpoints, stack, tests and deployment details.
+- Keep the tone professional, practical and evaluator-friendly.
+
+## Step 7 — Agents
 
 Create only useful agents for this project.
 
 Each agent must be adapted to the detected stack.
 
-## Step 7 — Commands
+## Step 8 — Commands
 
 Create commands adapted to the project.
 
@@ -147,7 +185,7 @@ Examples:
 
 Do not invent commands unless clearly marked as suggested.
 
-## Step 8 — Workflows
+## Step 9 — Workflows
 
 Create workflows adapted to the project.
 
@@ -207,11 +245,12 @@ After creating the files, report:
 
 1. detected stack
 2. whether `CLAUDE.md` was created or reconciled
-3. files created
-4. files updated
-5. cleanup performed or skipped
-6. assumptions made
-7. commands detected
-8. suggested commands
-9. recommended next steps
-10. risks or missing information
+3. whether `README_SUGGESTED_CLAUDE.md` was created or updated
+4. files created
+5. files updated
+6. cleanup performed or skipped
+7. assumptions made
+8. commands detected
+9. suggested commands
+10. recommended next steps
+11. risks or missing information

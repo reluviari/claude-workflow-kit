@@ -38,6 +38,7 @@ Create:
 
 ```txt
 CLAUDE.md
+README_SUGGESTED_CLAUDE.md, only if enough product, stack and run-context is known
 
 .claude/
   agents/
@@ -148,6 +149,39 @@ Each workflow must follow:
 9. summarize changes
 10. update docs when needed
 
+## Suggested product README
+
+If enough product, stack and run-context is known, create `README_SUGGESTED_CLAUDE.md` at the project root.
+
+Do not create this file by inventing details. If context is insufficient, skip the file and report which information is missing.
+
+When generated, the suggested README must follow this section order when applicable:
+
+1. project title and concise product summary
+2. market/problem context and value proposition
+3. demo, deployed environments or service URLs, only when evidenced
+4. local architecture diagram using Mermaid
+5. prerequisites
+6. how to run locally
+7. available scripts or commands
+8. main functional scope
+9. API endpoints, if applicable
+10. technology stack
+11. folder structure
+12. testing strategy and commands
+13. CI/CD, if detected
+14. observability, if detected
+15. cloud architecture or scalability diagram, only when evidenced
+16. decisions and trade-offs
+
+Rules for `README_SUGGESTED_CLAUDE.md`:
+
+- avoid changing or replacing `README.md`
+- avoid mentioning AI, Claude, agents, prompts, generated content, or AI-assisted development
+- avoid inventing URLs, credentials, features, endpoints, cloud providers, infrastructure, scripts or commands
+- mark inferred information as an assumption
+- use Mermaid diagrams when useful
+
 ## Important constraints
 
 Do not create application code.
@@ -188,9 +222,10 @@ Before your final response:
 At the end, report:
 
 1. whether `CLAUDE.md` was created or reconciled
-2. files created
-3. cleanup performed or skipped
-4. assumptions made
-5. recommended first prompt to start the real project
-6. how to use the generated workflow
-7. risks or missing information
+2. whether `README_SUGGESTED_CLAUDE.md` was created, skipped, or missing required context
+3. files created
+4. cleanup performed or skipped
+5. assumptions made
+6. recommended first prompt to start the real project
+7. how to use the generated workflow
+8. risks or missing information
