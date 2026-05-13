@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Reconciliará `CLAUDE.md` automaticamente durante o prompt de instalação, sem etapa manual separada.
+- Move a documentação gerada pelo Claude Workflow Kit para `docs/claude/`, preservando `docs/` para documentação própria do projeto.
 - Move o prompt bootstrap gerado para `.claude-workflow-kit/install-claude-workflow-kit.md`.
 - Remove `prompts/` do resultado final esperado da instalação.
 - Instrui o cleanup seguro de `.claude/worktrees/` quando criado pelo fluxo e vazio.

@@ -1,6 +1,6 @@
 # Analyze Stack and Generate Context
 
-Inspect this repository and generate or update `docs/PROJECT_CONTEXT.md`.
+Inspect this repository and generate or update `docs/claude/PROJECT_CONTEXT.md`.
 
 Do not modify application code.
 

@@ -99,12 +99,15 @@ meu-projeto/
 │       └── release-review.md
 │
 └── docs/
-    ├── PROJECT_CONTEXT.md
-    ├── ARCHITECTURE.md
-    ├── DECISIONS.md
-    ├── TESTING_STRATEGY.md
-    └── DELIVERY_PROCESS.md
+    └── claude/
+        ├── PROJECT_CONTEXT.md
+        ├── ARCHITECTURE.md
+        ├── DECISIONS.md
+        ├── TESTING_STRATEGY.md
+        └── DELIVERY_PROCESS.md
 ```
+
+A documentação gerada pelo kit fica em `docs/claude/` para não misturar com a documentação própria do projeto.
 
 O script de instalação prepara os arquivos fonte em `.claude-workflow-kit/`, gera o prompt temporário em `.claude-workflow-kit/install-claude-workflow-kit.md`, mas não cria código de aplicação, não instala dependências e não roda Claude automaticamente. A adaptação feita pelo Claude Code não deve deixar `prompts/` nem `.claude/worktrees/` como artefatos finais do kit.
 
@@ -138,7 +141,7 @@ Depois de instalar o kit, use este fluxo:
 ### Documentação base
 
 - `CLAUDE.md`;
-- `PROJECT_CONTEXT.md`;
+- documentos operacionais gerados em `docs/claude/`, como `PROJECT_CONTEXT.md`;
 - `DEFINITION_OF_READY.md`;
 - `DEFINITION_OF_DONE.md`;
 - `ENGINEERING_PRINCIPLES.md`;

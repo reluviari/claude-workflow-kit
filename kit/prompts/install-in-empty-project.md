@@ -14,7 +14,7 @@ Create the project AI workflow structure using:
 - .claude/agents
 - .claude/commands
 - .claude/workflows
-- docs/
+- docs/claude/
 
 ## First step
 
@@ -45,12 +45,15 @@ CLAUDE.md
   workflows/
 
 docs/
-  PROJECT_CONTEXT.md
-  ARCHITECTURE.md
-  DECISIONS.md
-  TESTING_STRATEGY.md
-  DELIVERY_PROCESS.md
+  claude/
+    PROJECT_CONTEXT.md
+    ARCHITECTURE.md
+    DECISIONS.md
+    TESTING_STRATEGY.md
+    DELIVERY_PROCESS.md
 ```
+
+Generated Claude Workflow Kit documentation must live under `docs/claude/` so project-owned documentation can use `docs/` without mixing concerns.
 
 Do not create a final project-level `prompts/` directory for this installation.
 

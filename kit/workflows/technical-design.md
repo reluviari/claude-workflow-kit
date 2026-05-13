@@ -13,7 +13,7 @@ Use this workflow before large implementation work.
 7. Define implementation phases.
 8. Define risks.
 9. Define validation strategy.
-10. Create or update docs/DECISIONS.md.
+10. Create or update docs/claude/DECISIONS.md.
 
 ## Output
 

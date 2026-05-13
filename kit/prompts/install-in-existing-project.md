@@ -69,12 +69,17 @@ CLAUDE.md
   workflows/
 
 docs/
-  PROJECT_CONTEXT.md
-  ARCHITECTURE.md
-  DECISIONS.md
-  TESTING_STRATEGY.md
-  DELIVERY_PROCESS.md
+  claude/
+    PROJECT_CONTEXT.md
+    ARCHITECTURE.md
+    DECISIONS.md
+    TESTING_STRATEGY.md
+    DELIVERY_PROCESS.md
 ```
+
+Generated Claude Workflow Kit documentation must live under `docs/claude/`.
+
+Treat existing content directly under `docs/` as user-owned project documentation by default. Do not move, rename, or overwrite project documentation unless explicitly requested. If old Claude Workflow Kit files already exist directly under `docs/`, migrate or reconcile them into `docs/claude/` only when they are clearly kit-generated; otherwise preserve them and report the ambiguity.
 
 Do not create a final project-level `prompts/` directory for this installation.
 
