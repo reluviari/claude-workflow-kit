@@ -8,6 +8,7 @@
 - Move o prompt bootstrap gerado para `.claude-workflow-kit/install-claude-workflow-kit.md`.
 - Remove `prompts/` do resultado final esperado da instalação.
 - Instrui o cleanup seguro de `.claude/worktrees/` quando criado pelo fluxo e vazio.
+- Pergunta ao usuário se deve remover `.claude-workflow-kit/` após a instalação terminar.
 
 ## v0.2.0
 

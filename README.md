@@ -113,7 +113,7 @@ A documentação gerada pelo kit fica em `docs/claude/` para não misturar com a
 
 O arquivo `README_SUGGESTED_CLAUDE.md` é uma proposta separada de README de produto e engenharia. Ele não substitui automaticamente o `README.md` existente, deve ser adaptado ao produto e stack reais, e seu conteúdo não deve mencionar AI, Claude ou assistência automatizada.
 
-O script de instalação prepara os arquivos fonte em `.claude-workflow-kit/`, gera o prompt temporário em `.claude-workflow-kit/install-claude-workflow-kit.md`, mas não cria código de aplicação, não instala dependências e não roda Claude automaticamente. A adaptação feita pelo Claude Code não deve deixar `prompts/` nem `.claude/worktrees/` como artefatos finais do kit.
+O script de instalação prepara os arquivos fonte em `.claude-workflow-kit/`, gera o prompt temporário em `.claude-workflow-kit/install-claude-workflow-kit.md`, mas não cria código de aplicação, não instala dependências e não roda Claude automaticamente. A adaptação feita pelo Claude Code não deve deixar `prompts/` nem `.claude/worktrees/` como artefatos finais do kit. Como `.claude-workflow-kit/` ainda é necessário para executar o prompt, ele só deve ser removido depois da instalação; ao final, o Claude Code pergunta se o usuário deseja excluí-lo.
 
 ## Como pensar neste kit
 

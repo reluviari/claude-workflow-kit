@@ -216,6 +216,10 @@ Before your final response:
 - Do not leave `.claude/worktrees/` artifacts created by this installation flow.
 - If `.claude/worktrees/` is empty, remove it.
 - If `.claude/worktrees/` contains active or unknown content, preserve it and report the path for manual review.
+- After all installation work is complete, ask the user whether they want to delete the temporary `.claude-workflow-kit/` directory.
+- Delete `.claude-workflow-kit/` only after explicit user confirmation.
+- If the user declines, preserve `.claude-workflow-kit/` and report that it was kept.
+- If `.claude-workflow-kit/` contains unexpected content or deletion fails, preserve it and report manual cleanup guidance.
 
 ## Final response
 

@@ -113,6 +113,7 @@ The Claude Workflow Kit source files are available in:
 Use this prompt inside Claude Code from the root of the target project.
 Claude must inspect this project, reconcile CLAUDE.md automatically, and adapt the workspace before creating project-specific files.
 Do not leave a project-level prompts/ directory or .claude/worktrees/ artifacts created by this installation flow.
+After installation is complete, ask the user whether to delete the temporary .claude-workflow-kit/ directory before removing it.
 
 ---
 
@@ -141,5 +142,6 @@ Next step:
 2. Paste the contents of: .claude-workflow-kit/install-claude-workflow-kit.md
 
 The generated Claude prompt reconciles CLAUDE.md automatically and should not leave prompts/ or .claude/worktrees/ installation artifacts.
+.claude-workflow-kit/ is temporary installation source material; after adaptation, Claude will ask whether to remove it.
 The installer did not modify application code, install dependencies, or run Claude automatically.
 EOF
