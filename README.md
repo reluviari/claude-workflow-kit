@@ -4,6 +4,23 @@ Um kit operacional para usar Claude Code com contexto, agentes, comandos, workfl
 
 Este projeto não é um boilerplate de aplicação. Ele define uma disciplina operacional de IA para estruturar como o Claude Code entende contexto, planeja, implementa, testa, revisa e entrega mudanças em projetos de software.
 
+## Relação com `/init`
+
+Este kit não substitui o comando `/init` do Claude Code. Ele complementa o bootstrap nativo com uma camada de método, governança e execução.
+
+> **O `/init` dá consciência do projeto.**  
+> **O Claude Workflow Kit dá disciplina operacional.**
+
+Use os dois em conjunto:
+
+```txt
+1. Rode /init para o Claude entender o projeto real.
+2. Instale o Claude Workflow Kit para adicionar agentes, comandos, workflows e critérios de qualidade.
+3. Peça ao Claude para reconciliar o CLAUDE.md gerado com a disciplina operacional do kit.
+```
+
+Em outras palavras: `/init` descobre o contexto; o Claude Workflow Kit padroniza como a IA deve trabalhar dentro desse contexto.
+
 ## Quickstart
 
 ### Projeto existente
