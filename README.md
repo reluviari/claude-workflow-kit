@@ -115,6 +115,38 @@ O arquivo `README_SUGGESTED_CLAUDE.md` é uma proposta separada de README de pro
 
 O script de instalação prepara os arquivos fonte em `.claude-workflow-kit/`, gera o prompt temporário em `.claude-workflow-kit/install-claude-workflow-kit.md`, mas não cria código de aplicação, não instala dependências e não roda Claude automaticamente. A adaptação feita pelo Claude Code não deve deixar `prompts/` nem `.claude/worktrees/` como artefatos finais do kit. Como `.claude-workflow-kit/` ainda é necessário para executar o prompt, ele só deve ser removido depois da instalação; ao final, o Claude Code pergunta se o usuário deseja excluí-lo.
 
+## Como o Claude usa estes arquivos
+
+O kit separa contexto, comandos, agentes, workflows e documentação. Nem tudo é carregado automaticamente em toda pergunta.
+
+| Local | Tipo | Uso automático? | Quando é usado |
+| --- | --- | --- | --- |
+| `CLAUDE.md` | contexto persistente do projeto | sim, no início da sessão | orienta regras, padrões, comandos e critérios de trabalho |
+| `.claude/commands/` | slash commands / skills | sob demanda | quando o usuário chama `/plan`, `/implement`, `/review`, `/test`, `/commit` ou outro comando |
+| `.claude/agents/` | subagentes especializados | sob demanda | quando o usuário pede ou quando o Claude delega uma tarefa compatível |
+| `.claude/workflows/` | biblioteca de processos do kit | não automaticamente | quando `CLAUDE.md`, um comando, um agente ou o usuário referencia o workflow |
+| `docs/claude/` | documentação operacional consultável | não automaticamente | quando importada, lida por comando/agente ou solicitada pelo usuário |
+
+`CLAUDE.md` é a camada de orientação permanente. Ele não executa ações sozinho, mas define como o Claude deve trabalhar no projeto e quando deve consultar comandos, workflows e documentação.
+
+Os arquivos em `.claude/commands/` ficam disponíveis como comandos. O conteúdo completo de um comando entra no contexto quando ele é invocado.
+
+Os arquivos em `.claude/agents/` definem agentes do projeto instalado. O diálogo `/agents` lista agentes que existem em `.claude/agents/` do workspace atual. Neste repositório, os agentes em `kit/agents/` são apenas templates de distribuição; por isso `/agents` pode não listar nada se o kit não foi instalado/adaptado neste próprio projeto.
+
+Os arquivos em `.claude/workflows/` são uma convenção deste kit para descrever processos reutilizáveis. Eles não são um diretório mágico carregado automaticamente pelo Claude Code; precisam ser referenciados por `CLAUDE.md`, comandos, agentes ou pelo usuário.
+
+Os arquivos em `docs/claude/` guardam contexto operacional separado da documentação própria do produto. Eles ficam disponíveis para consulta, mas não entram automaticamente no contexto só por existirem.
+
+Em resumo:
+
+```txt
+CLAUDE.md              → orienta sempre
+.claude/commands/     → comandos invocados sob demanda
+.claude/agents/       → especialistas delegados sob demanda
+.claude/workflows/    → processos consultados quando referenciados
+docs/claude/          → contexto operacional consultável
+```
+
 ## Como pensar neste kit
 
 A ideia é simples:

@@ -9,6 +9,7 @@
 - Remove `prompts/` do resultado final esperado da instalação.
 - Instrui o cleanup seguro de `.claude/worktrees/` quando criado pelo fluxo e vazio.
 - Pergunta ao usuário se deve remover `.claude-workflow-kit/` após a instalação terminar.
+- Esclarece no README como Claude Code usa `CLAUDE.md`, `.claude/commands/`, `.claude/agents/`, `.claude/workflows/` e `docs/claude/`.
 
 ## v0.2.0
 
