@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.2.0
+
+- Adiciona `scripts/install.sh` para instalação simplificada em projetos existentes ou vazios.
+- Gera um único prompt de instalação em `prompts/install-claude-workflow-kit.md`.
+- Simplifica o README com Quickstart baseado em um comando via `curl`.
+- Mantém o ZIP como artefato de distribuição para mantenedores.
+- Corrige o build do ZIP removendo referência à pasta `examples/` inexistente.
+
 ## v0.1.0
 
 Primeira versão do Claude Workflow Kit.

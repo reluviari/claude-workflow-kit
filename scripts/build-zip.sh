@@ -15,7 +15,6 @@ zip -r "$ZIP_FILE" \
   LICENSE \
   CHANGELOG.md \
   kit \
-  examples \
   scripts \
   -x "zip/*" \
   -x ".git/*" \
