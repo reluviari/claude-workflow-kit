@@ -15,7 +15,6 @@ Create the project AI workflow structure using:
 - .claude/commands
 - .claude/workflows
 - docs/
-- prompts/
 
 ## First step
 
@@ -51,18 +50,17 @@ docs/
   DECISIONS.md
   TESTING_STRATEGY.md
   DELIVERY_PROCESS.md
-
-prompts/
-  01-install-claude-workflow-kit.md
-  02-generate-project-context.md
-  03-generate-agents.md
-  04-generate-workflows.md
-  05-review-installation.md
 ```
 
-## CLAUDE.md requirements
+Do not create a final project-level `prompts/` directory for this installation.
+
+## CLAUDE.md reconciliation requirements
 
 The CLAUDE.md file must be concise, practical and project-specific.
+
+If `CLAUDE.md` already exists, reconcile it in place instead of replacing it blindly. Preserve useful project context, constraints, expected stack, and user-provided direction, then merge in Claude Workflow Kit operational discipline.
+
+If `CLAUDE.md` does not exist, create it directly with the collected project context and kit discipline.
 
 It must include:
 
@@ -165,14 +163,31 @@ Do not create fake commands.
 
 Do not over-engineer.
 
+Do not delete application files.
+
+You may delete only temporary Claude Workflow Kit installation artifacts created by this installation flow.
+
 Only create the Claude Workflow Kit structure.
+
+## Final cleanup
+
+Before your final response:
+
+- Do not leave a project-level `prompts/` directory created only for installation.
+- If `prompts/` contains only Claude Workflow Kit installation artifacts, delete those files and remove the directory.
+- If `prompts/` contains user-owned or unknown files, preserve it and report why it was not removed.
+- Do not leave `.claude/worktrees/` artifacts created by this installation flow.
+- If `.claude/worktrees/` is empty, remove it.
+- If `.claude/worktrees/` contains active or unknown content, preserve it and report the path for manual review.
 
 ## Final response
 
 At the end, report:
 
-1. files created
-2. assumptions made
-3. recommended first prompt to start the real project
-4. how to use the generated workflow
-5. risks or missing information
+1. whether `CLAUDE.md` was created or reconciled
+2. files created
+3. cleanup performed or skipped
+4. assumptions made
+5. recommended first prompt to start the real project
+6. how to use the generated workflow
+7. risks or missing information

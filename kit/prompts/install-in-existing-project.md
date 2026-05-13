@@ -74,20 +74,17 @@ docs/
   DECISIONS.md
   TESTING_STRATEGY.md
   DELIVERY_PROCESS.md
-
-prompts/
-  01-install-claude-workflow-kit.md
-  02-generate-project-context.md
-  03-generate-agents.md
-  04-generate-workflows.md
-  05-review-installation.md
 ```
 
-## Step 5 — CLAUDE.md
+Do not create a final project-level `prompts/` directory for this installation.
+
+## Step 5 — Reconcile CLAUDE.md automatically
 
 The CLAUDE.md file must be specific to this repository.
 
-It must include:
+If `CLAUDE.md` already exists, reconcile it in place instead of replacing it blindly.
+
+Treat an existing `/init`-generated `CLAUDE.md` as useful project-discovery context. Preserve concrete facts about:
 
 - detected stack
 - project structure
@@ -97,12 +94,18 @@ It must include:
 - how to typecheck, if applicable
 - coding standards found in the project
 - architectural boundaries
+- repository-specific constraints
+
+Then merge in Claude Workflow Kit operational discipline:
+
 - SOLID and Clean Architecture observations
 - architecture improvement recommendations
 - AI execution rules
 - forbidden behaviors
 - review expectations
 - stop conditions
+
+Avoid duplicated sections. Prefer real project facts over generic kit text. If existing instructions conflict with kit discipline, preserve the project-specific constraint and document the conflict clearly in `CLAUDE.md`.
 
 ## Step 6 — Agents
 
@@ -168,7 +171,9 @@ Do not refactor existing code.
 
 Do not rename existing files.
 
-Do not delete files.
+Do not delete application files.
+
+You may delete only temporary Claude Workflow Kit installation artifacts created by this installation flow.
 
 Do not change application behavior.
 
@@ -180,15 +185,28 @@ Do not modify deployment configuration.
 
 This task is only about installing Claude Workflow Kit.
 
+## Final cleanup
+
+Before your final response:
+
+- Do not leave a project-level `prompts/` directory created only for installation.
+- If `prompts/` contains only Claude Workflow Kit installation artifacts, delete those files and remove the directory.
+- If `prompts/` contains user-owned or unknown files, preserve it and report why it was not removed.
+- Do not leave `.claude/worktrees/` artifacts created by this installation flow.
+- If `.claude/worktrees/` is empty, remove it.
+- If `.claude/worktrees/` contains active or unknown content, preserve it and report the path for manual review.
+
 ## Final response
 
 After creating the files, report:
 
 1. detected stack
-2. files created
-3. files updated
-4. assumptions made
-5. commands detected
-6. suggested commands
-7. recommended next steps
-8. risks or missing information
+2. whether `CLAUDE.md` was created or reconciled
+3. files created
+4. files updated
+5. cleanup performed or skipped
+6. assumptions made
+7. commands detected
+8. suggested commands
+9. recommended next steps
+10. risks or missing information

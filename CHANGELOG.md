@@ -1,9 +1,16 @@
 # Changelog
 
+## Unreleased
+
+- Reconciliará `CLAUDE.md` automaticamente durante o prompt de instalação, sem etapa manual separada.
+- Move o prompt bootstrap gerado para `.claude-workflow-kit/install-claude-workflow-kit.md`.
+- Remove `prompts/` do resultado final esperado da instalação.
+- Instrui o cleanup seguro de `.claude/worktrees/` quando criado pelo fluxo e vazio.
+
 ## v0.2.0
 
 - Adiciona `scripts/install.sh` para instalação simplificada em projetos existentes ou vazios.
-- Gera um único prompt de instalação em `prompts/install-claude-workflow-kit.md`.
+- Gera um único prompt de instalação em `.claude-workflow-kit/install-claude-workflow-kit.md`.
 - Simplifica o README com Quickstart baseado em um comando via `curl`.
 - Mantém o ZIP como artefato de distribuição para mantenedores.
 - Corrige o build do ZIP removendo referência à pasta `examples/` inexistente.

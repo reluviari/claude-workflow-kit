@@ -14,12 +14,13 @@ Este kit não substitui o comando `/init` do Claude Code. Ele complementa o boot
 Use os dois em conjunto:
 
 ```txt
-1. Rode /init para o Claude entender o projeto real.
+1. Rode /init para o Claude entender o projeto real, se desejar.
 2. Instale o Claude Workflow Kit para adicionar agentes, comandos, workflows e critérios de qualidade.
-3. Peça ao Claude para reconciliar o CLAUDE.md gerado com a disciplina operacional do kit.
+3. Cole o prompt de instalação gerado no Claude Code.
+4. O prompt reconcilia automaticamente o CLAUDE.md existente com a disciplina operacional do kit.
 ```
 
-Em outras palavras: `/init` descobre o contexto; o Claude Workflow Kit padroniza como a IA deve trabalhar dentro desse contexto.
+Em outras palavras: `/init` descobre o contexto; o Claude Workflow Kit padroniza como a IA deve trabalhar dentro desse contexto, sem exigir uma etapa manual separada de reconciliação.
 
 ## Quickstart
 
@@ -36,10 +37,10 @@ claude
 Depois, cole no Claude Code o conteúdo gerado em:
 
 ```txt
-prompts/install-claude-workflow-kit.md
+.claude-workflow-kit/install-claude-workflow-kit.md
 ```
 
-O Claude deve analisar a estrutura atual, detectar a stack, identificar comandos reais de build/test/lint, avaliar sinais de SOLID e Clean Architecture, sugerir melhorias arquiteturais e criar o workspace adaptado ao projeto.
+O Claude deve analisar a estrutura atual, detectar a stack, identificar comandos reais de build/test/lint, avaliar sinais de SOLID e Clean Architecture, reconciliar automaticamente `CLAUDE.md` existente com a disciplina operacional do kit, sugerir melhorias arquiteturais e criar o workspace adaptado ao projeto.
 
 ### Projeto vazio
 
@@ -55,10 +56,10 @@ claude
 Depois, cole no Claude Code o conteúdo gerado em:
 
 ```txt
-prompts/install-claude-workflow-kit.md
+.claude-workflow-kit/install-claude-workflow-kit.md
 ```
 
-O Claude deve perguntar apenas o contexto mínimo necessário e criar a estrutura operacional do projeto sem implementar código de aplicação.
+O Claude deve perguntar apenas o contexto mínimo necessário, criar ou reconciliar `CLAUDE.md` automaticamente e gerar a estrutura operacional do projeto sem implementar código de aplicação.
 
 ## O que o kit cria
 
@@ -97,18 +98,15 @@ meu-projeto/
 │       ├── technical-design.md
 │       └── release-review.md
 │
-├── docs/
-│   ├── PROJECT_CONTEXT.md
-│   ├── ARCHITECTURE.md
-│   ├── DECISIONS.md
-│   ├── TESTING_STRATEGY.md
-│   └── DELIVERY_PROCESS.md
-│
-└── prompts/
-    └── install-claude-workflow-kit.md
+└── docs/
+    ├── PROJECT_CONTEXT.md
+    ├── ARCHITECTURE.md
+    ├── DECISIONS.md
+    ├── TESTING_STRATEGY.md
+    └── DELIVERY_PROCESS.md
 ```
 
-O script de instalação prepara os arquivos fonte em `.claude-workflow-kit/`, mas não cria código de aplicação, não instala dependências e não roda Claude automaticamente.
+O script de instalação prepara os arquivos fonte em `.claude-workflow-kit/`, gera o prompt temporário em `.claude-workflow-kit/install-claude-workflow-kit.md`, mas não cria código de aplicação, não instala dependências e não roda Claude automaticamente. A adaptação feita pelo Claude Code não deve deixar `prompts/` nem `.claude/worktrees/` como artefatos finais do kit.
 
 ## Como pensar neste kit
 
@@ -230,7 +228,7 @@ claude
 Depois, cole no Claude Code o conteúdo de:
 
 ```txt
-prompts/install-claude-workflow-kit.md
+.claude-workflow-kit/install-claude-workflow-kit.md
 ```
 
 ## Para mantenedores

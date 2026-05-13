@@ -25,8 +25,7 @@ fi
 
 TARGET_DIR="$(pwd)"
 INSTALL_DIR="$TARGET_DIR/.claude-workflow-kit"
-PROMPTS_DIR="$TARGET_DIR/prompts"
-PROMPT_FILE="$PROMPTS_DIR/install-claude-workflow-kit.md"
+PROMPT_FILE="$INSTALL_DIR/install-claude-workflow-kit.md"
 TMP_DIR=""
 
 cleanup() {
@@ -100,8 +99,6 @@ generate_prompt() {
     mode_label="empty project"
   fi
 
-  mkdir -p "$PROMPTS_DIR"
-
   cat > "$PROMPT_FILE" <<EOF
 # Install Claude Workflow Kit
 
@@ -114,7 +111,8 @@ The Claude Workflow Kit source files are available in:
 \`\`\`
 
 Use this prompt inside Claude Code from the root of the target project.
-Claude must inspect this project and adapt the workspace before creating project-specific files.
+Claude must inspect this project, reconcile CLAUDE.md automatically, and adapt the workspace before creating project-specific files.
+Do not leave a project-level prompts/ directory or .claude/worktrees/ artifacts created by this installation flow.
 
 ---
 
@@ -140,7 +138,8 @@ Target: $TARGET_DIR
 
 Next step:
 1. Run: claude
-2. Paste the contents of: prompts/install-claude-workflow-kit.md
+2. Paste the contents of: .claude-workflow-kit/install-claude-workflow-kit.md
 
+The generated Claude prompt reconciles CLAUDE.md automatically and should not leave prompts/ or .claude/worktrees/ installation artifacts.
 The installer did not modify application code, install dependencies, or run Claude automatically.
 EOF
