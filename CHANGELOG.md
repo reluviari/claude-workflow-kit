@@ -10,6 +10,14 @@
 - Instrui o cleanup seguro de `.claude/worktrees/` quando criado pelo fluxo e vazio.
 - Pergunta ao usuário se deve remover `.claude-workflow-kit/` após a instalação terminar.
 - Esclarece no README como Claude Code usa `CLAUDE.md`, `.claude/commands/`, `.claude/agents/`, `.claude/workflows/` e `docs/claude/`.
+- Padroniza comandos com contratos operacionais explícitos: objetivo, uso, entradas, regras, fluxo, validação, condições de parada e saída.
+- Padroniza workflows com contexto obrigatório, validação e gates de parada.
+- Padroniza agentes com contratos de delegação, inspeção, validação e saída específica por papel.
+- Expande notas de stack com sinais de detecção, comandos a descobrir, riscos comuns e checklist de validação.
+- Alinha prompts de instalação e geradores aos novos contratos estruturados.
+- Adiciona suporte a `CWK_VERSION` com branch ou tag no instalador via GitHub archive.
+- Adiciona `scripts/validate-kit.sh` e GitHub Actions para validar estrutura, contratos e sintaxe shell.
+- Documenta contratos operacionais, instalação versionada e validação para mantenedores.
 
 ## v0.2.0
 

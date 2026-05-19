@@ -61,6 +61,17 @@ Depois, cole no Claude Code o conteúdo gerado em:
 
 O Claude deve perguntar apenas o contexto mínimo necessário, criar ou reconciliar `CLAUDE.md` automaticamente e gerar a estrutura operacional do projeto sem implementar código de aplicação.
 
+### Instalação versionada
+
+Por padrão, o instalador usa a branch `master`. Para fixar uma branch ou tag, defina `CWK_VERSION`:
+
+```bash
+CWK_VERSION=v0.2.0 \
+  curl -fsSL https://raw.githubusercontent.com/reluviari/claude-workflow-kit/master/scripts/install.sh | bash -s -- existing
+```
+
+`CWK_VERSION` aceita tags como `v0.2.0` e branches como `master`.
+
 ## O que o kit cria
 
 Depois da instalação e adaptação pelo Claude Code, o projeto deve ficar assim:
@@ -156,6 +167,46 @@ Contexto → Planejamento → Execução → Teste → Revisão → Documentaç�
 ```
 
 O Claude Code continua sendo uma IA. O kit reduz improviso, aumenta contexto e cria um método repetível.
+
+## Contratos operacionais dos prompts
+
+Os comandos, agentes e workflows do kit seguem contratos explícitos para reduzir improviso e tornar o comportamento mais verificável.
+
+Comandos incluem:
+
+- objetivo;
+- quando usar;
+- entradas esperadas;
+- regras;
+- fluxo de execução;
+- validação;
+- condições de parada;
+- formato de saída.
+
+Workflows incluem:
+
+- objetivo;
+- quando usar;
+- contexto obrigatório;
+- regras;
+- fluxo;
+- validação;
+- condições de parada;
+- saída esperada.
+
+Agentes incluem:
+
+- objetivo;
+- quando usar;
+- entradas;
+- o que inspecionar;
+- regras;
+- fluxo;
+- validação;
+- condições de parada;
+- saída esperada.
+
+Esse formato ajuda o Claude Code a continuar trabalhando com evidência, parar antes de ações arriscadas e entregar respostas consistentes entre projetos.
 
 ## Como usar depois da instalação
 
@@ -273,6 +324,23 @@ Depois, cole no Claude Code o conteúdo de:
 
 ## Para mantenedores
 
+### Validar o kit
+
+Antes de abrir PR ou gerar release, rode a validação estrutural:
+
+```bash
+bash scripts/validate-kit.sh
+```
+
+Ela verifica:
+
+- estrutura obrigatória do repositório;
+- se comandos, agentes, workflows e stack notes mantêm os contratos esperados;
+- restrições críticas dos prompts de instalação;
+- sintaxe dos scripts shell.
+
+O mesmo check roda no GitHub Actions em `push` e `pull_request`.
+
 ### Gerar ZIP de distribuição
 
 O ZIP é um artefato de release, não o fluxo principal de instalação.
@@ -296,6 +364,10 @@ claude-workflow-kit/
 ├── LICENSE
 ├── CHANGELOG.md
 │
+├── .github/
+│   └── workflows/
+│       └── validate.yml
+│
 ├── kit/
 │   ├── base/
 │   ├── agents/
@@ -306,7 +378,8 @@ claude-workflow-kit/
 │
 └── scripts/
     ├── install.sh
-    └── build-zip.sh
+    ├── build-zip.sh
+    └── validate-kit.sh
 ```
 
 ## Quando usar
