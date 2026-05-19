@@ -16,6 +16,15 @@ Create the project AI workflow structure using:
 - .claude/workflows
 - docs/claude/
 
+## Operating rules
+
+- Inspect before creating files.
+- Ask only for missing context that is required to create a useful workspace.
+- Do not invent product facts, business rules, commands, URLs, infrastructure, or features.
+- Mark assumptions clearly.
+- Create a workspace for future project work, not application code.
+- Validate the final file layout before reporting completion.
+
 ## First step
 
 Inspect the current directory.
@@ -96,14 +105,26 @@ Possible agents:
 - product-analyst
 - documentation-writer
 
-Each agent must include:
+Each agent must use this structure:
 
-- responsibility
-- when to use
-- what to inspect
-- expected output
-- constraints
-- checklist
+```md
+---
+name: agent-name
+description: Use for...
+---
+
+# Agent Name
+
+## Goal
+## When to use
+## Inputs
+## What to inspect
+## Rules
+## Workflow
+## Validation
+## Stop conditions
+## Output
+```
 
 ## Command requirements
 
@@ -118,13 +139,22 @@ Minimum commands:
 - commit.md
 - update-context.md
 
-Each command must include:
+Each command must use this structure:
 
-- purpose
-- inputs
-- steps
-- expected output
-- stop conditions
+```md
+# /command-name
+
+## Goal
+## When to use
+## Inputs
+## Rules
+## Workflow
+## Validation
+## Stop conditions
+## Output
+```
+
+Commands must be project-specific and must not invent commands unless clearly marked as suggestions.
 
 ## Workflow requirements
 
@@ -136,18 +166,22 @@ Create workflows for:
 - technical design
 - release review
 
-Each workflow must follow:
+Each workflow must use this structure:
 
-1. understand scope
-2. inspect current files
-3. identify constraints
-4. identify risks
-5. propose plan
-6. wait for approval before major changes
-7. implement incrementally
-8. run available checks
-9. summarize changes
-10. update docs when needed
+```md
+# Workflow Name
+
+## Goal
+## When to use
+## Required context
+## Rules
+## Workflow
+## Validation
+## Stop conditions
+## Output
+```
+
+Each workflow must include approval gates for broad, destructive, or risky changes.
 
 ## Suggested product README
 
@@ -232,4 +266,5 @@ At the end, report:
 5. assumptions made
 6. recommended first prompt to start the real project
 7. how to use the generated workflow
-8. risks or missing information
+8. validation performed
+9. risks or missing information

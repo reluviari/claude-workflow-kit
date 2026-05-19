@@ -12,6 +12,15 @@ Do not add dependencies.
 
 Do not modify business logic.
 
+## Operating rules
+
+- Inspect the repository before creating or changing files.
+- Use evidence from files for stack, commands, architecture, and docs.
+- Do not invent product facts, commands, URLs, infrastructure, or business rules.
+- Mark assumptions clearly.
+- Prefer reconciling existing context over replacing it.
+- Validate the final file layout before reporting completion.
+
 ## Step 1 — Inspect the project
 
 Analyze:
@@ -41,6 +50,8 @@ Identify the stack with evidence from files.
 Do not guess without evidence.
 
 If something is inferred, mark it as an assumption.
+
+Use stack notes from `.claude-workflow-kit/kit/stacks/` as detection guidance, not as application scaffolding instructions.
 
 ## Step 3 — Evaluate architecture and design principles
 
@@ -109,6 +120,7 @@ Then merge in Claude Workflow Kit operational discipline:
 - AI execution rules
 - forbidden behaviors
 - review expectations
+- command, workflow, and agent contracts
 - stop conditions
 
 Avoid duplicated sections. Prefer real project facts over generic kit text. If existing instructions conflict with kit discipline, preserve the project-specific constraint and document the conflict clearly in `CLAUDE.md`.
@@ -156,6 +168,27 @@ Create only useful agents for this project.
 
 Each agent must be adapted to the detected stack.
 
+Each agent must use this structure:
+
+```md
+---
+name: agent-name
+description: Use for...
+---
+
+# Agent Name
+
+## Goal
+## When to use
+## Inputs
+## What to inspect
+## Rules
+## Workflow
+## Validation
+## Stop conditions
+## Output
+```
+
 ## Step 8 — Commands
 
 Create commands adapted to the project.
@@ -169,19 +202,31 @@ Minimum commands:
 - commit.md
 - update-context.md
 
+Each command must use this structure:
+
+```md
+# /command-name
+
+## Goal
+## When to use
+## Inputs
+## Rules
+## Workflow
+## Validation
+## Stop conditions
+## Output
+```
+
 Use real commands from the repository when available.
 
-Examples:
+Examples of command families to discover:
 
-- npm test
-- npm run lint
-- npm run typecheck
-- yarn test
-- pnpm test
+- npm/yarn/pnpm test, lint, typecheck, build
 - bundle exec rspec
 - rails test
-- docker compose up
-- make test
+- pytest
+- docker compose commands
+- make targets
 
 Do not invent commands unless clearly marked as suggested.
 
@@ -197,14 +242,22 @@ Minimum workflows:
 - technical-design.md
 - release-review.md
 
-Each workflow must include:
+Each workflow must use this structure:
 
-- when to use
-- required context
-- steps
-- expected output
-- validation strategy
-- stop conditions
+```md
+# Workflow Name
+
+## Goal
+## When to use
+## Required context
+## Rules
+## Workflow
+## Validation
+## Stop conditions
+## Output
+```
+
+Each workflow must include approval gates for broad, destructive, or risky changes.
 
 ## Important constraints
 
@@ -248,13 +301,15 @@ Before your final response:
 After creating the files, report:
 
 1. detected stack
-2. whether `CLAUDE.md` was created or reconciled
-3. whether `README_SUGGESTED_CLAUDE.md` was created or updated
-4. files created
-5. files updated
-6. cleanup performed or skipped
-7. assumptions made
-8. commands detected
-9. suggested commands
-10. recommended next steps
-11. risks or missing information
+2. stack evidence
+3. whether `CLAUDE.md` was created or reconciled
+4. whether `README_SUGGESTED_CLAUDE.md` was created or updated
+5. files created
+6. files updated
+7. cleanup performed or skipped
+8. assumptions made
+9. commands detected
+10. suggested commands
+11. validation performed
+12. recommended next steps
+13. risks or missing information
