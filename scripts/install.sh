@@ -7,9 +7,13 @@ Usage:
   install.sh existing
   install.sh empty
 
+Environment:
+  CWK_VERSION  Branch or tag to download when installing from GitHub. Defaults to master.
+
 Examples:
   curl -fsSL https://raw.githubusercontent.com/reluviari/claude-workflow-kit/master/scripts/install.sh | bash -s -- existing
   curl -fsSL https://raw.githubusercontent.com/reluviari/claude-workflow-kit/master/scripts/install.sh | bash -s -- empty
+  CWK_VERSION=v0.2.0 curl -fsSL https://raw.githubusercontent.com/reluviari/claude-workflow-kit/master/scripts/install.sh | bash -s -- existing
 
 This installer only copies Claude Workflow Kit assets and generates an installation prompt.
 It does not create application code, install dependencies, or run Claude automatically.
@@ -67,20 +71,45 @@ install_from_local_repo() {
   return 1
 }
 
+download_archive() {
+  local ref_type="$1"
+  local version="$2"
+  local archive_file="$3"
+  local archive_url
+
+  archive_url="https://github.com/reluviari/claude-workflow-kit/archive/refs/${ref_type}/${version}.tar.gz"
+  curl -fsSL "$archive_url" -o "$archive_file"
+}
+
+find_extracted_source_dir() {
+  local candidate
+
+  for candidate in "$TMP_DIR"/claude-workflow-kit-*; do
+    if [[ -d "$candidate/kit" && -f "$candidate/README.md" ]]; then
+      printf '%s\n' "$candidate"
+      return 0
+    fi
+  done
+
+  return 1
+}
+
 install_from_github_archive() {
-  local version archive_url archive_file source_dir
+  local version archive_file source_dir
   version="${CWK_VERSION:-master}"
-  archive_url="https://github.com/reluviari/claude-workflow-kit/archive/refs/heads/${version}.tar.gz"
 
   TMP_DIR="$(mktemp -d)"
   archive_file="$TMP_DIR/claude-workflow-kit.tar.gz"
 
-  curl -fsSL "$archive_url" -o "$archive_file"
+  if [[ "$version" == v[0-9]* ]]; then
+    download_archive "tags" "$version" "$archive_file" || download_archive "heads" "$version" "$archive_file"
+  else
+    download_archive "heads" "$version" "$archive_file" || download_archive "tags" "$version" "$archive_file"
+  fi
+
   tar -xzf "$archive_file" -C "$TMP_DIR"
 
-  source_dir="$TMP_DIR/claude-workflow-kit-${version}"
-
-  if [[ ! -d "$source_dir/kit" ]]; then
+  if ! source_dir="$(find_extracted_source_dir)"; then
     echo "Could not locate Claude Workflow Kit files in downloaded archive." >&2
     exit 1
   fi
