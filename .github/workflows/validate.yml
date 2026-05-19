@@ -1,0 +1,16 @@
+name: Validate kit
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate kit structure and contracts
+        run: bash scripts/validate-kit.sh
